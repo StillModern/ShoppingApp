@@ -1,0 +1,509 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10E9248E187CDE89004684B3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E9248D187CDE89004684B3 /* UIKit.framework */; };
+		10E92490187CDE89004684B3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E9248F187CDE89004684B3 /* Foundation.framework */; };
+		10E92492187CDE89004684B3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E92491187CDE89004684B3 /* CoreGraphics.framework */; };
+		10E92498187CDE89004684B3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10E92496187CDE89004684B3 /* InfoPlist.strings */; };
+		10E9249A187CDE89004684B3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E92499187CDE89004684B3 /* main.m */; };
+		10E9249E187CDE89004684B3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E9249D187CDE89004684B3 /* AppDelegate.m */; };
+		10E924A0187CDE89004684B3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E9249F187CDE89004684B3 /* Default.png */; };
+		10E924A2187CDE89004684B3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E924A1187CDE89004684B3 /* Default@2x.png */; };
+		10E924A4187CDE89004684B3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E924A3187CDE89004684B3 /* Default-568h@2x.png */; };
+		10E924B1187CE025004684B3 /* GoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E924AF187CE025004684B3 /* GoodsViewController.m */; };
+		10E924B2187CE025004684B3 /* GoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E924B0187CE025004684B3 /* GoodsViewController.xib */; };
+		10E924B5187CE052004684B3 /* SearchHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E924B4187CE052004684B3 /* SearchHistoryView.m */; };
+		10E924B8187CE065004684B3 /* NetConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E924B7187CE065004684B3 /* NetConnect.m */; };
+		10E924BD187CE0D1004684B3 /* SearchGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E924BB187CE0D1004684B3 /* SearchGoodsViewController.m */; };
+		10E924BE187CE0D1004684B3 /* SearchGoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E924BC187CE0D1004684B3 /* SearchGoodsViewController.xib */; };
+		10E924C2187CE17C004684B3 /* DetailedGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E924C0187CE17C004684B3 /* DetailedGoodsViewController.m */; };
+		10E924C3187CE17C004684B3 /* DetailedGoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E924C1187CE17C004684B3 /* DetailedGoodsViewController.xib */; };
+		10E924C7187CE1BE004684B3 /* ShoppingCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E924C5187CE1BE004684B3 /* ShoppingCarViewController.m */; };
+		10E924C8187CE1BE004684B3 /* ShoppingCarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E924C6187CE1BE004684B3 /* ShoppingCarViewController.xib */; };
+		10E924CC187CE20E004684B3 /* PlaceOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E924CA187CE20E004684B3 /* PlaceOrderViewController.m */; };
+		10E924CD187CE20E004684B3 /* PlaceOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E924CB187CE20E004684B3 /* PlaceOrderViewController.xib */; };
+		10E924D1187CE236004684B3 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E924CF187CE236004684B3 /* MineViewController.m */; };
+		10E924D2187CE236004684B3 /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E924D0187CE236004684B3 /* MineViewController.xib */; };
+		10E924D6187CE257004684B3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E924D4187CE257004684B3 /* LoginViewController.m */; };
+		10E924D7187CE257004684B3 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E924D5187CE257004684B3 /* LoginViewController.xib */; };
+		10E924DB187CE265004684B3 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E924D9187CE265004684B3 /* RegisterViewController.m */; };
+		10E924DC187CE265004684B3 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E924DA187CE265004684B3 /* RegisterViewController.xib */; };
+		10E924E1187CE2AE004684B3 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E924DF187CE2AE004684B3 /* ChangePasswordViewController.m */; };
+		10E924E2187CE2AE004684B3 /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E924E0187CE2AE004684B3 /* ChangePasswordViewController.xib */; };
+		10E924E6187CE2D9004684B3 /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E924E4187CE2D9004684B3 /* AddressViewController.m */; };
+		10E924E7187CE2D9004684B3 /* AddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E924E5187CE2D9004684B3 /* AddressViewController.xib */; };
+		10E924EB187CE30B004684B3 /* QueryOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E924E9187CE30B004684B3 /* QueryOrderViewController.m */; };
+		10E924EC187CE30B004684B3 /* QueryOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E924EA187CE30B004684B3 /* QueryOrderViewController.xib */; };
+		10E924F0187CE321004684B3 /* QuerryGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E924EE187CE321004684B3 /* QuerryGoodsViewController.m */; };
+		10E924F1187CE321004684B3 /* QuerryGoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E924EF187CE321004684B3 /* QuerryGoodsViewController.xib */; };
+		10E924F8187CE413004684B3 /* AppraiseGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E924F6187CE413004684B3 /* AppraiseGoodsViewController.m */; };
+		10E924F9187CE413004684B3 /* AppraiseGoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E924F7187CE413004684B3 /* AppraiseGoodsViewController.xib */; };
+		10E924FD187CE42A004684B3 /* ChangeAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E924FB187CE42A004684B3 /* ChangeAddressViewController.m */; };
+		10E924FE187CE42A004684B3 /* ChangeAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E924FC187CE42A004684B3 /* ChangeAddressViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		10E9248A187CDE89004684B3 /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		10E9248D187CDE89004684B3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		10E9248F187CDE89004684B3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		10E92491187CDE89004684B3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		10E92495187CDE89004684B3 /* ShoppingApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ShoppingApp-Info.plist"; sourceTree = "<group>"; };
+		10E92497187CDE89004684B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		10E92499187CDE89004684B3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		10E9249B187CDE89004684B3 /* ShoppingApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShoppingApp-Prefix.pch"; sourceTree = "<group>"; };
+		10E9249C187CDE89004684B3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		10E9249D187CDE89004684B3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		10E9249F187CDE89004684B3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		10E924A1187CDE89004684B3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		10E924A3187CDE89004684B3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		10E924AE187CE025004684B3 /* GoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsViewController.h; sourceTree = "<group>"; };
+		10E924AF187CE025004684B3 /* GoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsViewController.m; sourceTree = "<group>"; };
+		10E924B0187CE025004684B3 /* GoodsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsViewController.xib; sourceTree = "<group>"; };
+		10E924B3187CE052004684B3 /* SearchHistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHistoryView.h; sourceTree = "<group>"; };
+		10E924B4187CE052004684B3 /* SearchHistoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHistoryView.m; sourceTree = "<group>"; };
+		10E924B6187CE065004684B3 /* NetConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetConnect.h; sourceTree = "<group>"; };
+		10E924B7187CE065004684B3 /* NetConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetConnect.m; sourceTree = "<group>"; };
+		10E924BA187CE0D1004684B3 /* SearchGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchGoodsViewController.h; sourceTree = "<group>"; };
+		10E924BB187CE0D1004684B3 /* SearchGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchGoodsViewController.m; sourceTree = "<group>"; };
+		10E924BC187CE0D1004684B3 /* SearchGoodsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchGoodsViewController.xib; sourceTree = "<group>"; };
+		10E924BF187CE17C004684B3 /* DetailedGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedGoodsViewController.h; sourceTree = "<group>"; };
+		10E924C0187CE17C004684B3 /* DetailedGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedGoodsViewController.m; sourceTree = "<group>"; };
+		10E924C1187CE17C004684B3 /* DetailedGoodsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailedGoodsViewController.xib; sourceTree = "<group>"; };
+		10E924C4187CE1BE004684B3 /* ShoppingCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCarViewController.h; sourceTree = "<group>"; };
+		10E924C5187CE1BE004684B3 /* ShoppingCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCarViewController.m; sourceTree = "<group>"; };
+		10E924C6187CE1BE004684B3 /* ShoppingCarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingCarViewController.xib; sourceTree = "<group>"; };
+		10E924C9187CE20E004684B3 /* PlaceOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceOrderViewController.h; sourceTree = "<group>"; };
+		10E924CA187CE20E004684B3 /* PlaceOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceOrderViewController.m; sourceTree = "<group>"; };
+		10E924CB187CE20E004684B3 /* PlaceOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceOrderViewController.xib; sourceTree = "<group>"; };
+		10E924CE187CE236004684B3 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
+		10E924CF187CE236004684B3 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+		10E924D0187CE236004684B3 /* MineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineViewController.xib; sourceTree = "<group>"; };
+		10E924D3187CE257004684B3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		10E924D4187CE257004684B3 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		10E924D5187CE257004684B3 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		10E924D8187CE265004684B3 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		10E924D9187CE265004684B3 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		10E924DA187CE265004684B3 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		10E924DE187CE2AE004684B3 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		10E924DF187CE2AE004684B3 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		10E924E0187CE2AE004684B3 /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
+		10E924E3187CE2D9004684B3 /* AddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
+		10E924E4187CE2D9004684B3 /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
+		10E924E5187CE2D9004684B3 /* AddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressViewController.xib; sourceTree = "<group>"; };
+		10E924E8187CE30B004684B3 /* QueryOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryOrderViewController.h; sourceTree = "<group>"; };
+		10E924E9187CE30B004684B3 /* QueryOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryOrderViewController.m; sourceTree = "<group>"; };
+		10E924EA187CE30B004684B3 /* QueryOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QueryOrderViewController.xib; sourceTree = "<group>"; };
+		10E924ED187CE321004684B3 /* QuerryGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerryGoodsViewController.h; sourceTree = "<group>"; };
+		10E924EE187CE321004684B3 /* QuerryGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerryGoodsViewController.m; sourceTree = "<group>"; };
+		10E924EF187CE321004684B3 /* QuerryGoodsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuerryGoodsViewController.xib; sourceTree = "<group>"; };
+		10E924F5187CE413004684B3 /* AppraiseGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppraiseGoodsViewController.h; sourceTree = "<group>"; };
+		10E924F6187CE413004684B3 /* AppraiseGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppraiseGoodsViewController.m; sourceTree = "<group>"; };
+		10E924F7187CE413004684B3 /* AppraiseGoodsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppraiseGoodsViewController.xib; sourceTree = "<group>"; };
+		10E924FA187CE42A004684B3 /* ChangeAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeAddressViewController.h; sourceTree = "<group>"; };
+		10E924FB187CE42A004684B3 /* ChangeAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeAddressViewController.m; sourceTree = "<group>"; };
+		10E924FC187CE42A004684B3 /* ChangeAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeAddressViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		10E92487187CDE89004684B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10E9248E187CDE89004684B3 /* UIKit.framework in Frameworks */,
+				10E92490187CDE89004684B3 /* Foundation.framework in Frameworks */,
+				10E92492187CDE89004684B3 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10E92481187CDE89004684B3 = {
+			isa = PBXGroup;
+			children = (
+				10E92493187CDE89004684B3 /* ShoppingApp */,
+				10E9248C187CDE89004684B3 /* Frameworks */,
+				10E9248B187CDE89004684B3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		10E9248B187CDE89004684B3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				10E9248A187CDE89004684B3 /* ShoppingApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		10E9248C187CDE89004684B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				10E9248D187CDE89004684B3 /* UIKit.framework */,
+				10E9248F187CDE89004684B3 /* Foundation.framework */,
+				10E92491187CDE89004684B3 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		10E92493187CDE89004684B3 /* ShoppingApp */ = {
+			isa = PBXGroup;
+			children = (
+				10E9249C187CDE89004684B3 /* AppDelegate.h */,
+				10E9249D187CDE89004684B3 /* AppDelegate.m */,
+				10E924AA187CDE8E004684B3 /* TabBarController */,
+				10E924AB187CDEC3004684B3 /* SearchHistory */,
+				10E924B9187CE09C004684B3 /* GoodsController */,
+				10E924DD187CE27E004684B3 /* MineController */,
+				10E924AD187CDF5C004684B3 /* LoginAndRegister */,
+				10E924AC187CDF1C004684B3 /* NetConnect */,
+				10E92494187CDE89004684B3 /* Supporting Files */,
+			);
+			path = ShoppingApp;
+			sourceTree = "<group>";
+		};
+		10E92494187CDE89004684B3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				10E92495187CDE89004684B3 /* ShoppingApp-Info.plist */,
+				10E92496187CDE89004684B3 /* InfoPlist.strings */,
+				10E92499187CDE89004684B3 /* main.m */,
+				10E9249B187CDE89004684B3 /* ShoppingApp-Prefix.pch */,
+				10E9249F187CDE89004684B3 /* Default.png */,
+				10E924A1187CDE89004684B3 /* Default@2x.png */,
+				10E924A3187CDE89004684B3 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		10E924AA187CDE8E004684B3 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				10E924AE187CE025004684B3 /* GoodsViewController.h */,
+				10E924AF187CE025004684B3 /* GoodsViewController.m */,
+				10E924B0187CE025004684B3 /* GoodsViewController.xib */,
+				10E924C4187CE1BE004684B3 /* ShoppingCarViewController.h */,
+				10E924C5187CE1BE004684B3 /* ShoppingCarViewController.m */,
+				10E924C6187CE1BE004684B3 /* ShoppingCarViewController.xib */,
+				10E924CE187CE236004684B3 /* MineViewController.h */,
+				10E924CF187CE236004684B3 /* MineViewController.m */,
+				10E924D0187CE236004684B3 /* MineViewController.xib */,
+			);
+			name = TabBarController;
+			sourceTree = "<group>";
+		};
+		10E924AB187CDEC3004684B3 /* SearchHistory */ = {
+			isa = PBXGroup;
+			children = (
+				10E924B3187CE052004684B3 /* SearchHistoryView.h */,
+				10E924B4187CE052004684B3 /* SearchHistoryView.m */,
+			);
+			name = SearchHistory;
+			sourceTree = "<group>";
+		};
+		10E924AC187CDF1C004684B3 /* NetConnect */ = {
+			isa = PBXGroup;
+			children = (
+				10E924B6187CE065004684B3 /* NetConnect.h */,
+				10E924B7187CE065004684B3 /* NetConnect.m */,
+			);
+			name = NetConnect;
+			sourceTree = "<group>";
+		};
+		10E924AD187CDF5C004684B3 /* LoginAndRegister */ = {
+			isa = PBXGroup;
+			children = (
+				10E924D3187CE257004684B3 /* LoginViewController.h */,
+				10E924D4187CE257004684B3 /* LoginViewController.m */,
+				10E924D5187CE257004684B3 /* LoginViewController.xib */,
+				10E924D8187CE265004684B3 /* RegisterViewController.h */,
+				10E924D9187CE265004684B3 /* RegisterViewController.m */,
+				10E924DA187CE265004684B3 /* RegisterViewController.xib */,
+			);
+			name = LoginAndRegister;
+			sourceTree = "<group>";
+		};
+		10E924B9187CE09C004684B3 /* GoodsController */ = {
+			isa = PBXGroup;
+			children = (
+				10E924BA187CE0D1004684B3 /* SearchGoodsViewController.h */,
+				10E924BB187CE0D1004684B3 /* SearchGoodsViewController.m */,
+				10E924BC187CE0D1004684B3 /* SearchGoodsViewController.xib */,
+				10E924BF187CE17C004684B3 /* DetailedGoodsViewController.h */,
+				10E924C0187CE17C004684B3 /* DetailedGoodsViewController.m */,
+				10E924C1187CE17C004684B3 /* DetailedGoodsViewController.xib */,
+				10E924C9187CE20E004684B3 /* PlaceOrderViewController.h */,
+				10E924CA187CE20E004684B3 /* PlaceOrderViewController.m */,
+				10E924CB187CE20E004684B3 /* PlaceOrderViewController.xib */,
+			);
+			name = GoodsController;
+			sourceTree = "<group>";
+		};
+		10E924DD187CE27E004684B3 /* MineController */ = {
+			isa = PBXGroup;
+			children = (
+				10E924DE187CE2AE004684B3 /* ChangePasswordViewController.h */,
+				10E924DF187CE2AE004684B3 /* ChangePasswordViewController.m */,
+				10E924E0187CE2AE004684B3 /* ChangePasswordViewController.xib */,
+				10E924F4187CE3FC004684B3 /* Addresss */,
+				10E924F2187CE360004684B3 /* Order */,
+				10E924F3187CE3B3004684B3 /* Goods */,
+			);
+			name = MineController;
+			sourceTree = "<group>";
+		};
+		10E924F2187CE360004684B3 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				10E924E8187CE30B004684B3 /* QueryOrderViewController.h */,
+				10E924E9187CE30B004684B3 /* QueryOrderViewController.m */,
+				10E924EA187CE30B004684B3 /* QueryOrderViewController.xib */,
+			);
+			name = Order;
+			sourceTree = "<group>";
+		};
+		10E924F3187CE3B3004684B3 /* Goods */ = {
+			isa = PBXGroup;
+			children = (
+				10E924ED187CE321004684B3 /* QuerryGoodsViewController.h */,
+				10E924EE187CE321004684B3 /* QuerryGoodsViewController.m */,
+				10E924EF187CE321004684B3 /* QuerryGoodsViewController.xib */,
+				10E924F5187CE413004684B3 /* AppraiseGoodsViewController.h */,
+				10E924F6187CE413004684B3 /* AppraiseGoodsViewController.m */,
+				10E924F7187CE413004684B3 /* AppraiseGoodsViewController.xib */,
+			);
+			name = Goods;
+			sourceTree = "<group>";
+		};
+		10E924F4187CE3FC004684B3 /* Addresss */ = {
+			isa = PBXGroup;
+			children = (
+				10E924E3187CE2D9004684B3 /* AddressViewController.h */,
+				10E924E4187CE2D9004684B3 /* AddressViewController.m */,
+				10E924E5187CE2D9004684B3 /* AddressViewController.xib */,
+				10E924FA187CE42A004684B3 /* ChangeAddressViewController.h */,
+				10E924FB187CE42A004684B3 /* ChangeAddressViewController.m */,
+				10E924FC187CE42A004684B3 /* ChangeAddressViewController.xib */,
+			);
+			name = Addresss;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		10E92489187CDE89004684B3 /* ShoppingApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10E924A7187CDE89004684B3 /* Build configuration list for PBXNativeTarget "ShoppingApp" */;
+			buildPhases = (
+				10E92486187CDE89004684B3 /* Sources */,
+				10E92487187CDE89004684B3 /* Frameworks */,
+				10E92488187CDE89004684B3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShoppingApp;
+			productName = ShoppingApp;
+			productReference = 10E9248A187CDE89004684B3 /* ShoppingApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		10E92482187CDE89004684B3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = Oliver;
+			};
+			buildConfigurationList = 10E92485187CDE89004684B3 /* Build configuration list for PBXProject "ShoppingApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 10E92481187CDE89004684B3;
+			productRefGroup = 10E9248B187CDE89004684B3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				10E92489187CDE89004684B3 /* ShoppingApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		10E92488187CDE89004684B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10E92498187CDE89004684B3 /* InfoPlist.strings in Resources */,
+				10E924A0187CDE89004684B3 /* Default.png in Resources */,
+				10E924A2187CDE89004684B3 /* Default@2x.png in Resources */,
+				10E924A4187CDE89004684B3 /* Default-568h@2x.png in Resources */,
+				10E924B2187CE025004684B3 /* GoodsViewController.xib in Resources */,
+				10E924BE187CE0D1004684B3 /* SearchGoodsViewController.xib in Resources */,
+				10E924C3187CE17C004684B3 /* DetailedGoodsViewController.xib in Resources */,
+				10E924C8187CE1BE004684B3 /* ShoppingCarViewController.xib in Resources */,
+				10E924CD187CE20E004684B3 /* PlaceOrderViewController.xib in Resources */,
+				10E924D2187CE236004684B3 /* MineViewController.xib in Resources */,
+				10E924D7187CE257004684B3 /* LoginViewController.xib in Resources */,
+				10E924DC187CE265004684B3 /* RegisterViewController.xib in Resources */,
+				10E924E2187CE2AE004684B3 /* ChangePasswordViewController.xib in Resources */,
+				10E924E7187CE2D9004684B3 /* AddressViewController.xib in Resources */,
+				10E924EC187CE30B004684B3 /* QueryOrderViewController.xib in Resources */,
+				10E924F1187CE321004684B3 /* QuerryGoodsViewController.xib in Resources */,
+				10E924F9187CE413004684B3 /* AppraiseGoodsViewController.xib in Resources */,
+				10E924FE187CE42A004684B3 /* ChangeAddressViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		10E92486187CDE89004684B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10E9249A187CDE89004684B3 /* main.m in Sources */,
+				10E9249E187CDE89004684B3 /* AppDelegate.m in Sources */,
+				10E924B1187CE025004684B3 /* GoodsViewController.m in Sources */,
+				10E924B5187CE052004684B3 /* SearchHistoryView.m in Sources */,
+				10E924B8187CE065004684B3 /* NetConnect.m in Sources */,
+				10E924BD187CE0D1004684B3 /* SearchGoodsViewController.m in Sources */,
+				10E924C2187CE17C004684B3 /* DetailedGoodsViewController.m in Sources */,
+				10E924C7187CE1BE004684B3 /* ShoppingCarViewController.m in Sources */,
+				10E924CC187CE20E004684B3 /* PlaceOrderViewController.m in Sources */,
+				10E924D1187CE236004684B3 /* MineViewController.m in Sources */,
+				10E924D6187CE257004684B3 /* LoginViewController.m in Sources */,
+				10E924DB187CE265004684B3 /* RegisterViewController.m in Sources */,
+				10E924E1187CE2AE004684B3 /* ChangePasswordViewController.m in Sources */,
+				10E924E6187CE2D9004684B3 /* AddressViewController.m in Sources */,
+				10E924EB187CE30B004684B3 /* QueryOrderViewController.m in Sources */,
+				10E924F0187CE321004684B3 /* QuerryGoodsViewController.m in Sources */,
+				10E924F8187CE413004684B3 /* AppraiseGoodsViewController.m in Sources */,
+				10E924FD187CE42A004684B3 /* ChangeAddressViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		10E92496187CDE89004684B3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10E92497187CDE89004684B3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		10E924A5187CDE89004684B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		10E924A6187CDE89004684B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		10E924A8187CDE89004684B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShoppingApp/ShoppingApp-Prefix.pch";
+				INFOPLIST_FILE = "ShoppingApp/ShoppingApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		10E924A9187CDE89004684B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShoppingApp/ShoppingApp-Prefix.pch";
+				INFOPLIST_FILE = "ShoppingApp/ShoppingApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		10E92485187CDE89004684B3 /* Build configuration list for PBXProject "ShoppingApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10E924A5187CDE89004684B3 /* Debug */,
+				10E924A6187CDE89004684B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10E924A7187CDE89004684B3 /* Build configuration list for PBXNativeTarget "ShoppingApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10E924A8187CDE89004684B3 /* Debug */,
+				10E924A9187CDE89004684B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 10E92482187CDE89004684B3 /* Project object */;
+}
