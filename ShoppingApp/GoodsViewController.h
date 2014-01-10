@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HotGoodsView.h"
 
-@interface GoodsViewController : UIViewController
+@interface GoodsViewController : UIViewController<UISearchBarDelegate,UIScrollViewDelegate,HotGoodsViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
+{
+    UIScrollView *_scrollView;
+    UIPageControl *_pageControl;
+    UICollectionView *_collectionView;
+    NetConnect *_netConnect;
+    NSOperationQueue *_operationQueue;
+    NSMutableArray *_arrayAllGoods;
+}
 
 @end

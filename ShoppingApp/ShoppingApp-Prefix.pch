@@ -12,4 +12,26 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "NetConnect.h"
+    #import "ShoppingManager.h"
+
+    #define KConnectIP @"192.168.1.135"
+
+    #define KINTRODUCTION @"/introduction.php"
+    #define KSPECIFICATIONS @"/specifications.php"
+    #define KPACKINGLIST @"/packinglist.php"
+    #define KSERVICE @"/service.php"
+
+    #define KCELLIDENTIFIER @"CellIdentifier"
+
+    #define KHTTPMETHOD @"post"
+    #define KERROR @"error"
+    #define KMSG @"msg"
+    #define KINFOS @"infos"
+
+    #define KGOODSID @"goodsid"
+    #define KNAME @"name"
+    #define KIMAGE @"headerimage"
+    #define KPRICE @"price"
+    #define KSELLCOUNT @"sellcount"
+
 #endif

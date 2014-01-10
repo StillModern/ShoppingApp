@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailedGoodsViewController : UIViewController
+@interface DetailedGoodsViewController : UIViewController<UIScrollViewDelegate>
+{
+    NetConnect *_netConnect;
+    NSOperationQueue *_operationQueue;
+    UIImageView *_imageView;
+    UILabel *_labelName;
+    UILabel *_labelPrice;
+    UILabel *_labelSellCount;
+    UIScrollView *_scrollView;
+    UISegmentedControl *_segmentedControl;
+}
 
 @end
