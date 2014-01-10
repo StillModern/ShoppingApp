@@ -51,7 +51,7 @@
     [lButtonAddToCar setFrame:CGRectMake(160, 464, 160, 40)];
     [lButtonAddToCar setTitle:@"添加到购物车" forState:UIControlStateNormal];
     [lButtonAddToCar setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [lButtonAddToCar addTarget:self action:@selector(buttonAddToCar:) forControlEvents:UIControlEventTouchUpInside];
+    [lButtonAddToCar addTarget:self action:@selector(buttonAddToCarClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:lButtonAddToCar];
     
     _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 20, 100, 100)];
@@ -118,6 +118,7 @@
     [_labelSellCount release];
     [_scrollView release];
     [_segmentedControl release];
+    [_webViewIntroduction release];
     [super dealloc];
 }
 
@@ -174,13 +175,20 @@
 }
 
 - (void)tapGestureRecognizer:(UITapGestureRecognizer *)sender{
-    UIWebView *lWebView = [[UIWebView alloc]initWithFrame:self.navigationController.view.bounds];
+    _webViewIntroduction = [[UIWebView alloc]initWithFrame:CGRectMake(0, 20, 320, 548)];
+    _webViewIntroduction.alpha = 0.8;
     NSURL *lURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",_netConnect.lGOOdsOtherInfo,[ShoppingManager shareShoppingManager].goodsId,KINTRODUCTION]];
     NSURLRequest *lRequest = [NSURLRequest requestWithURL:lURL];
-    [lWebView loadRequest:lRequest];
-    [self.navigationController.view addSubview:lWebView];
-    [lWebView release];
-    NSLog(@"xx");
+    [_webViewIntroduction loadRequest:lRequest];
+    [self.navigationController.view addSubview:_webViewIntroduction];
+    
+    UIButton *lButtonDismiss = [UIButton buttonWithType:UIButtonTypeCustom];
+    [lButtonDismiss setFrame:CGRectMake(300, 0, 20, 20)];
+    [lButtonDismiss setTitle:@"X" forState:UIControlStateNormal];
+    [lButtonDismiss setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [lButtonDismiss setBackgroundColor:[UIColor redColor]];
+    [lButtonDismiss addTarget:self action:@selector(buttonDismissClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_webViewIntroduction addSubview:lButtonDismiss];
 }
 
 - (void)segmentedChange:(UISegmentedControl *)sender{
@@ -199,8 +207,12 @@
     NSLog(@"buy");
 }
 
-- (void)buttonAddToCar:(UIButton *)sender{
+- (void)buttonAddToCarClick:(UIButton *)sender{
     NSLog(@"AddToCar");
+}
+
+- (void)buttonDismissClick:(UIButton *)sender{
+    [_webViewIntroduction removeFromSuperview];
 }
 
 @end

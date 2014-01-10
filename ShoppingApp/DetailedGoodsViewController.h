@@ -18,6 +18,7 @@
     UILabel *_labelSellCount;
     UIScrollView *_scrollView;
     UISegmentedControl *_segmentedControl;
+    UIWebView *_webViewIntroduction;
 }
 
 @end
