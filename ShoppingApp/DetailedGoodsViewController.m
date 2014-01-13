@@ -7,6 +7,7 @@
 //
 
 #import "DetailedGoodsViewController.h"
+#import "TableViewReViewCell.h"
 
 @interface DetailedGoodsViewController ()
 
@@ -22,6 +23,8 @@
         self.title = @"商品详情";
         _netConnect = [[NetConnect alloc]init];
         _operationQueue = [[NSOperationQueue alloc]init];
+        _arrayStar = [[NSMutableArray alloc]init];
+        _arrayReview = [[NSMutableArray alloc]init];
     }
     return self;
 }
@@ -96,12 +99,84 @@
     [_scrollView setContentSize:CGSizeMake(_scrollView.frame.size.width*4, _scrollView.frame.size.height)];
     _scrollView.delegate = self;
     _scrollView.pagingEnabled = YES;
-    _scrollView.showsHorizontalScrollIndicator = YES;
+    _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.bounces = NO;
     _scrollView.backgroundColor = [UIColor cyanColor];
     [self.view addSubview:_scrollView];
     
+    UIView *lViewIntroduction = [[UIView alloc]initWithFrame:CGRectMake(320*0, 0, 320, 300)];
+    [lViewIntroduction setBackgroundColor:[UIColor cyanColor]];
+    [_scrollView addSubview:lViewIntroduction];
+    
+    _labelColor = [[UILabel alloc]initWithFrame:CGRectMake(20, 20, 130, 25)];
+    [_labelColor setTextColor:[UIColor blueColor]];
+    [_labelColor setFont:[UIFont boldSystemFontOfSize:20]];
+    [_labelColor setBackgroundColor:[UIColor clearColor]];
+    [lViewIntroduction addSubview:_labelColor];
+    
+    _labelSize = [[UILabel alloc]initWithFrame:CGRectMake(160, 20, 140, 25)];
+    [_labelSize setTextColor:[UIColor magentaColor]];
+    [_labelSize setTextAlignment:NSTextAlignmentRight];
+    [_labelSize setFont:[UIFont boldSystemFontOfSize:20]];
+    [_labelSize setBackgroundColor:[UIColor clearColor]];
+    [lViewIntroduction addSubview:_labelSize];
+    
+    UILabel *lLabelStar = [[UILabel alloc]initWithFrame:CGRectMake(20, 65, 70, 25)];
+    [lLabelStar setText:@"总评价:"];
+    [lLabelStar setTextColor:[UIColor redColor]];
+    [lLabelStar setFont:[UIFont boldSystemFontOfSize:20]];
+    [lLabelStar setBackgroundColor:[UIColor clearColor]];
+    [lViewIntroduction addSubview:lLabelStar];
+    
+    for (int i=0; i<5; i++) {
+        UIImageView *lImageView = [[UIImageView alloc]initWithFrame:CGRectMake(95+30*i, 65, 25, 25)];
+        [_arrayStar addObject:lImageView];
+        [lViewIntroduction addSubview:lImageView];
+    }
+    
+    UILabel *lLabelList = [[UILabel alloc]initWithFrame:CGRectMake(20, 110, 90, 25)];
+    [lLabelList setText:@"包装清单:"];
+    [lLabelList setFont:[UIFont boldSystemFontOfSize:20]];
+    [lLabelList setBackgroundColor:[UIColor clearColor]];
+    [lViewIntroduction addSubview:lLabelList];
+    
+    _webPackinglist = [[UIWebView alloc]initWithFrame:CGRectMake(20, 140, 280, 140)];
+    [_webPackinglist setBackgroundColor:[UIColor cyanColor]];
+    [lViewIntroduction addSubview:_webPackinglist];
+    
+    _webViewSpecifications = [[UIWebView alloc]initWithFrame:CGRectMake(320*1, 0, 320, 300)];
+    [_webViewSpecifications setBackgroundColor:[UIColor cyanColor]];
+    [_scrollView addSubview:_webViewSpecifications];
+    
+    _tabelViewReview = [[UITableView alloc]initWithFrame:CGRectMake(320*2, 0, 320, 300) style:UITableViewStylePlain];
+    _tabelViewReview.separatorColor = [UIColor blueColor];
+    _tabelViewReview.dataSource = self;
+    _tabelViewReview.delegate = self;
+    _tabelViewReview.backgroundColor = [UIColor cyanColor];
+    
+    _viewReview = [[UIView alloc]initWithFrame:CGRectMake(320*2, 0, 320, 300)];
+    [_viewReview setBackgroundColor:[UIColor cyanColor]];
+    
+    UIImageView *lImageViewEmpty = [[UIImageView alloc]initWithFrame:CGRectMake(60, 20, 200, 200)];
+    [lImageViewEmpty setImage:[UIImage imageNamed:@"empty.png"]];
+    [_viewReview addSubview:lImageViewEmpty];
+    [lImageViewEmpty release];
+    
+    UILabel *lLabelEmpty = [[UILabel alloc]initWithFrame:CGRectMake(50, 235, 210, 30)];
+    [lLabelEmpty setText:@"暂无商品评论信息"];
+    [lLabelEmpty setTextAlignment:NSTextAlignmentCenter];
+    [lLabelEmpty setTextColor:[UIColor blueColor]];
+    [lLabelEmpty setFont:[UIFont boldSystemFontOfSize:25]];
+    [lLabelEmpty setBackgroundColor:[UIColor clearColor]];
+    [_viewReview addSubview:lLabelEmpty];
+    [lLabelEmpty release];
+    
+    _webService = [[UIWebView alloc]initWithFrame:CGRectMake(320*3, 0, 320, 300)];
+    [_webViewSpecifications setBackgroundColor:[UIColor clearColor]];
+    [_scrollView addSubview:_webService];
+    
     [self getGoodsInfo];
+    [self setScrollViewInfo];
 }
 
 - (void)didReceiveMemoryWarning
@@ -119,6 +194,15 @@
     [_scrollView release];
     [_segmentedControl release];
     [_webViewIntroduction release];
+    [_arrayReview release];
+    [_labelColor release];
+    [_labelSize release];
+    [_arrayStar release];
+    [_webPackinglist release];
+    [_webViewSpecifications release];
+    [_tabelViewReview release];
+    [_viewReview release];
+    [_webService release];
     [super dealloc];
 }
 
@@ -150,8 +234,7 @@
     NSString *lImagePath = [_netConnect.lGoodsImage stringByAppendingString:[dictionary objectForKey:KIMAGE]];
     NSURL *lURL = [NSURL URLWithString:lImagePath];
     NSURLRequest *lRequest = [NSURLRequest requestWithURL:lURL];
-    NSOperationQueue *lOperationQueue = [[NSOperationQueue alloc]init];
-    [NSURLConnection sendAsynchronousRequest:lRequest queue:lOperationQueue completionHandler:^(NSURLResponse *lResponse, NSData *lData, NSError *lError) {
+    [NSURLConnection sendAsynchronousRequest:lRequest queue:_operationQueue completionHandler:^(NSURLResponse *lResponse, NSData *lData, NSError *lError) {
         if (lError == nil) {
             dispatch_sync(dispatch_get_main_queue(), ^{
                 UIImage *lImage = [UIImage imageWithData:lData];
@@ -168,6 +251,68 @@
     [_labelName setText:[dictionary objectForKey:KNAME]];
     [_labelPrice setText:[NSString stringWithFormat:@"￥%@",[dictionary objectForKey:KPRICE]]];
     [_labelSellCount setText:[NSString stringWithFormat:@"销量 %@",[dictionary objectForKey:KSELLCOUNT]]];
+    
+    [_labelColor setText:[NSString stringWithFormat:@"颜色:%@",[dictionary objectForKey:KCOLOR]]];
+    [_labelSize setText:[NSString stringWithFormat:@"型号:%@",[dictionary objectForKey:KSIZE]]];
+    
+    for (int i=1; i<=5; i++) {
+        UIImageView *lImageView = [_arrayStar objectAtIndex:i-1];
+        NSString *lStrStar = [dictionary objectForKey:KSTAR];
+        double star = [lStrStar doubleValue];
+        if (i < star) {
+            [lImageView setImage:[UIImage imageNamed:@"star_light.png"]];
+        } else if (i < star+0.5) {
+            [lImageView setImage:[UIImage imageNamed:@"star_half.png"]];
+        } else {
+            [lImageView setImage:[UIImage imageNamed:@"star.png"]];
+        }
+    }
+}
+
+- (void)setScrollViewInfo{
+    [self getGoodsReview];
+    
+    NSURL *lURLPackinglist = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",_netConnect.lGOOdsOtherInfo,[ShoppingManager shareShoppingManager].goodsId,KPACKINGLIST]];
+    NSURLRequest *lRequestPackinglist = [NSURLRequest requestWithURL:lURLPackinglist];
+    [_webPackinglist loadRequest:lRequestPackinglist];
+    
+    NSURL *lURLSpecifications = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",_netConnect.lGOOdsOtherInfo,[ShoppingManager shareShoppingManager].goodsId,KSPECIFICATIONS]];
+    NSURLRequest *lRequestSpecifications = [NSURLRequest requestWithURL:lURLSpecifications];
+    [_webViewSpecifications loadRequest:lRequestSpecifications];
+    
+    NSURL *lURLService = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",_netConnect.lGOOdsOtherInfo,[ShoppingManager shareShoppingManager].goodsId,KSERVICE]];
+    NSURLRequest *lRequestService = [NSURLRequest requestWithURL:lURLService];
+    [_webService loadRequest:lRequestService];
+}
+
+- (void)getGoodsReview{
+    NSURL *lURLReview = [NSURL URLWithString:_netConnect.lGetReview];
+    NSMutableURLRequest *lRequestReview = [NSMutableURLRequest requestWithURL:lURLReview];
+    NSString *lStringBody = [NSString stringWithFormat:@"goodsid=%@&owncount=%i",[ShoppingManager shareShoppingManager].goodsId,0];
+    [lRequestReview setHTTPMethod:KHTTPMETHOD];
+    [lRequestReview setHTTPBody:[lStringBody dataUsingEncoding:NSUTF8StringEncoding]];
+    [NSURLConnection sendAsynchronousRequest:lRequestReview queue:_operationQueue completionHandler:^(NSURLResponse *lResponse, NSData *lData, NSError *lError) {
+        if (lError == nil) {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                NSDictionary *lDicGoodsReview = [NSJSONSerialization JSONObjectWithData:lData options:NSJSONReadingAllowFragments error:nil];
+                NSString *lStrError = [lDicGoodsReview objectForKey:KERROR];
+                if ([lStrError intValue] == 0) {
+                    NSDictionary *lDicMsg = [lDicGoodsReview objectForKey:KMSG];
+                    [_arrayReview addObjectsFromArray:[lDicMsg objectForKey:KINFOS]];
+                    [_segmentedControl setTitle:[NSString stringWithFormat:@"评论 %@",[lDicMsg objectForKey:KCount]] forSegmentAtIndex:2];
+                    if (_arrayReview.count == 0) {
+                        [_scrollView addSubview:_viewReview];
+                    } else {
+                        [_scrollView addSubview:_tabelViewReview];
+                    }
+                }else{
+                    
+                }
+            });
+        } else {
+            
+        }
+    }];
 }
 
 - (void)leftButtonClick:(UIButton *)sender{
@@ -198,9 +343,46 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    CGPoint offset = scrollView.contentOffset;
-    CGRect rect = scrollView.frame;
+    CGPoint offset = _scrollView.contentOffset;
+    CGRect rect = _scrollView.frame;
     [_segmentedControl setSelectedSegmentIndex:offset.x/rect.size.width];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _arrayReview.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 120;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *lCellIdentifier = KCELLIDENTIFIER;
+    TableViewReViewCell *lCell = [tableView dequeueReusableCellWithIdentifier:lCellIdentifier];
+    if (lCell == nil) {
+        lCell = [[[TableViewReViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:lCellIdentifier]autorelease];
+    }
+    
+    NSInteger row = [indexPath row];
+    NSDictionary *lDicReview = [_arrayReview objectAtIndex:row];
+    NSString *lStrStar = [lDicReview objectForKey:KSTAR];
+    for (int i=0; i<5; i++) {
+        UIImageView *lImageView = [lCell.arrayStar objectAtIndex:i];
+        if (i<[lStrStar intValue]) {
+            [lImageView setImage:[UIImage imageNamed:@"star_light.png"]];
+        } else {
+            [lImageView setImage:[UIImage imageNamed:@"star.png"]];
+        }
+    }
+    [lCell.labelDetail setText:[lDicReview objectForKey:KDETAIL]];
+    [lCell.labelDate setText:[lDicReview objectForKey:KDATE]];
+    [lCell.labelName setText:[lDicReview objectForKey:KNAME]];
+    
+    return lCell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+    return NO;
 }
 
 - (void)buttonBuyClick:(UIButton *)sender{
