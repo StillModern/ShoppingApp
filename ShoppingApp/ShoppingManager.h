@@ -13,6 +13,7 @@
 @property(nonatomic, assign) BOOL isLogin;
 @property(nonatomic, copy) NSString *coustomerid;
 @property(nonatomic, copy) NSString *goodsId;
+@property(nonatomic, retain) NSMutableArray *arrayHistory;
 
 + (ShoppingManager *)shareShoppingManager;
 

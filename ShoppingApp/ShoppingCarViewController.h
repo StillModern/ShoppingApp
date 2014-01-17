@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface ShoppingCarViewController : UIViewController
-
+{
+    NetConnect *_netConnect;
+    NSOperationQueue *_operationQueue;
+    NSMutableArray *_arrayShoppingCar;
+    UILabel *_labelCount;
+    UIButton *_buttonBuy;
+    UIView *_viewEmpty;
+}
 @end

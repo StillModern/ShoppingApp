@@ -14,7 +14,7 @@
     #import "NetConnect.h"
     #import "ShoppingManager.h"
 
-    #define KConnectIP @"192.168.1.138"
+    #define KConnectIP @"192.168.1.120"
 
     #define KINTRODUCTION @"/introduction.php"
     #define KSPECIFICATIONS @"/specifications.php"
@@ -27,6 +27,7 @@
     #define KERROR @"error"
     #define KMSG @"msg"
     #define KINFOS @"infos"
+    #define KINFO @"info"
 
     #define KGOODSID @"goodsid"
     #define KNAME @"name"

@@ -25,8 +25,9 @@ static ShoppingManager *shareShoppingManager = nil;
     self = [super init];
     if (self) {
         _isLogin = NO;
-        _coustomerid = nil;
+        _coustomerid = @"3";
         _goodsId = nil;
+        _arrayHistory = [[NSMutableArray alloc]init];
     }
     return self;
 }

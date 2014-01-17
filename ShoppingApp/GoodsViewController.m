@@ -10,6 +10,8 @@
 #import "HotGoodsView.h"
 #import "CustomCollectionViewCell.h"
 #import "DetailedGoodsViewController.h"
+#import "SearchHistoryView.h"
+#import "SearchGoodsViewController.h"
 
 @interface GoodsViewController ()
 
@@ -23,6 +25,8 @@
     if (self) {
         // Custom initialization
         self.tabBarItem.title = @"商品";
+        self.tabBarItem.image = [UIImage imageNamed:@"tabbar_goods.png"];
+        
         _netConnect = [[NetConnect alloc]init];
         _operationQueue = [[NSOperationQueue alloc]init];
         _arrayAllGoods = [[NSMutableArray alloc]init];
@@ -36,12 +40,10 @@
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = [UIColor magentaColor];
     
-    UISearchBar *lSearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
-    lSearchBar.delegate = self;
-    lSearchBar.showsCancelButton = YES;
-    lSearchBar.tintColor = [UIColor blueColor];
-    [self.view addSubview:lSearchBar];
-    [lSearchBar release];
+    _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+    _searchBar.delegate = self;
+    _searchBar.tintColor = [UIColor blueColor];
+    [self.view addSubview:_searchBar];
     
     _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(20, 50, 280, 130)];
     _scrollView.delegate = self;
@@ -63,28 +65,27 @@
     [NSURLConnection sendAsynchronousRequest:lRequestHotGoods queue:_operationQueue completionHandler:^(NSURLResponse *lResponse, NSData *lData, NSError *lError) {
         if (lError == nil) {            
             dispatch_sync(dispatch_get_main_queue(), ^{
-                NSDictionary *lDicHotGoods = [NSJSONSerialization JSONObjectWithData:lData options:NSJSONReadingAllowFragments error:nil];                
-                NSArray *lArrayHotGoods = [lDicHotGoods objectForKey:KMSG];
-                [_scrollView setContentSize:CGSizeMake(280*lArrayHotGoods.count, 130)];
-                _pageControl.numberOfPages = lArrayHotGoods.count;                
-                for (int i=0; i<lArrayHotGoods.count; i++) {
-                    HotGoodsView *lHotGoodsView = [[HotGoodsView alloc]initWithFrame:CGRectMake(280*i, 0, 280, 130) AndDictionary:[lArrayHotGoods objectAtIndex:i]];
-                    lHotGoodsView.delegate = self;
-                    [_scrollView addSubview:lHotGoodsView];
-                    [lHotGoodsView release];
-                }  
+                NSDictionary *lDicHotGoods = [NSJSONSerialization JSONObjectWithData:lData options:NSJSONReadingAllowFragments error:nil];
+                NSString *lStrError = [lDicHotGoods objectForKey:KERROR];
+                if ([lStrError intValue] == 0) {
+                    NSArray *lArrayHotGoods = [lDicHotGoods objectForKey:KMSG];
+                    [_scrollView setContentSize:CGSizeMake(280*lArrayHotGoods.count, 130)];
+                    _pageControl.numberOfPages = lArrayHotGoods.count;
+                    for (int i=0; i<lArrayHotGoods.count; i++) {
+                        HotGoodsView *lHotGoodsView = [[HotGoodsView alloc]initWithFrame:CGRectMake(280*i, 0, 280, 130) AndDictionary:[lArrayHotGoods objectAtIndex:i]];
+                        lHotGoodsView.delegate = self;
+                        [_scrollView addSubview:lHotGoodsView];
+                        [lHotGoodsView release];
+                    }
+                }else{
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [self warning];
+                    });
+                }                 
             });            
         }else{
             dispatch_sync(dispatch_get_main_queue(), ^{
-                UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, self.view.frame.size.height-200, 280, 60)];
-                [label setBackgroundColor:[UIColor blackColor]];
-                [label setText:@"获取数据数据～～～"];
-                [label setTextColor:[UIColor whiteColor]];
-                [label setTextAlignment:NSTextAlignmentCenter];
-                [label setFont:[UIFont boldSystemFontOfSize:25]];
-                [self.view addSubview:label];
-                [self performSelector:@selector(removeLabel:) withObject:label afterDelay:1];
-                [label release];
+                [self warning];
             });
         }
     }];
@@ -106,19 +107,26 @@
     [NSURLConnection sendAsynchronousRequest:lRequestAllGoods queue:_operationQueue completionHandler:^(NSURLResponse *lResponse, NSData *lData, NSError *lError) {
         if (lError == nil) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                NSDictionary *lDicAllGoods = [NSJSONSerialization JSONObjectWithData:lData options:NSJSONReadingAllowFragments error:nil];
+                NSDictionary *lDicAllGoods = [NSJSONSerialization JSONObjectWithData:lData options:NSJSONReadingAllowFragments error:nil];                
                 NSString *lStrError = [lDicAllGoods objectForKey:KERROR];
                 if ([lStrError intValue] == 0) {
                     NSDictionary *lDicMsg = [lDicAllGoods objectForKey:KMSG];
-                    [_arrayAllGoods removeAllObjects];
-                    [_arrayAllGoods addObjectsFromArray:[lDicMsg objectForKey:KINFOS]];
-                    [_collectionView reloadData];
+                    NSString *lStrCount = [lDicMsg objectForKey:KCount];
+                    if ([lStrCount intValue] != 0) {
+                        [_arrayAllGoods removeAllObjects];
+                        [_arrayAllGoods addObjectsFromArray:[lDicMsg objectForKey:KINFOS]];
+                        [_collectionView reloadData];
+                    }                    
                 }else{
-                    
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [self warning];
+                    });
                 }
             });
         } else {
-            
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self warning];
+            });
         }
     }];
     
@@ -136,6 +144,10 @@
     [self.view addSubview:_collectionView];
     [lCollectionViewFlowLayout release];
     
+    _searchHistory = [[SearchHistoryView alloc]initWithFrame:CGRectMake(0, 60, 320, 510)];
+    _searchHistory.deleagate = self;
+    [_searchHistory setFrame:CGRectMake(0, 570, 320, 510)];
+    [self.tabBarController.view addSubview:_searchHistory];
 }
 
 - (void)didReceiveMemoryWarning
@@ -145,25 +157,69 @@
 }
 
 - (void)dealloc{
+    [_searchBar release];
     [_scrollView release];
     [_pageControl release];
     [_collectionView release];
     [_netConnect release];
     [_operationQueue release];
     [_arrayAllGoods release];
+    [_searchHistory release];
     [super dealloc];
 }
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [_searchHistory resetTableView];
 }
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    [searchBar resignFirstResponder];
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    [UIView beginAnimations:@"animation" context:nil];
+    [_searchHistory setFrame:CGRectMake(0, 60, 320, 510)];
+    _searchBar.showsCancelButton = YES;
+    [UIView commitAnimations];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{        
+    [[ShoppingManager shareShoppingManager].arrayHistory addObject:searchBar.text];
+    [_searchHistory resetTableView];
+    NSString *lStr = [NSString stringWithString:searchBar.text];
+    [self setSearchHistory];
+    [self turnToSearchGoods:lStr];
+        
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
+    _searchBar.showsCancelButton = NO;
+}
+
+- (void)swipeGestureRecognizer{
+    [self setSearchHistory];
+}
+
+- (void)historySelect:(NSString *)searchText{
+    [self setSearchHistory];
+    [self turnToSearchGoods:searchText];
+}
+
+- (void)setSearchHistory{
+    [UIView beginAnimations:@"animation" context:nil];
+    [_searchBar resignFirstResponder];
+    [_searchBar setText:nil];
+    [_searchHistory setFrame:CGRectMake(0, 570, 320, 510)];
+    [UIView commitAnimations];
+}
+
+- (void)turnToSearchGoods:(NSString *)searchText{
+    SearchGoodsViewController *lSearchGoods = [[SearchGoodsViewController alloc]init];
+    [lSearchGoods.searchText setString:searchText];
+    UINavigationController *lNavigation = [[UINavigationController alloc]initWithRootViewController:lSearchGoods];
+    lNavigation.navigationBar.tintColor = [UIColor blueColor];
+    [lNavigation setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [self.tabBarController presentViewController:lNavigation animated:YES completion:nil];
+    [lSearchGoods release];
+    [lNavigation release];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -180,13 +236,7 @@
 
 - (void)tapGestureRecognizer:(HotGoodsView *)hotGoodsView{
     [ShoppingManager shareShoppingManager].goodsId = hotGoodsView.goodsID;
-    DetailedGoodsViewController *lDetailed = [[DetailedGoodsViewController alloc]init];
-    UINavigationController *lNavigation = [[UINavigationController alloc]initWithRootViewController:lDetailed];
-    lNavigation.navigationBar.tintColor = [UIColor blueColor];
-    [lNavigation setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    [self.tabBarController presentViewController:lNavigation animated:YES completion:nil];
-    [lDetailed release];
-    [lNavigation release];
+    [self turnToDetailedGoods];
 }
 
 - (void)segmentedChange:(UISegmentedControl *)sender{
@@ -216,15 +266,22 @@
                 NSString *lStrError = [lDicAllGoods objectForKey:KERROR];
                 if ([lStrError intValue] == 0) {
                     NSDictionary *lDicMsg = [lDicAllGoods objectForKey:KMSG];
-                    [_arrayAllGoods removeAllObjects];
-                    [_arrayAllGoods addObjectsFromArray:[lDicMsg objectForKey:KINFOS]];
-                    [_collectionView reloadData];
+                    NSString *lStrCount = [lDicMsg objectForKey:KCount];
+                    if ([lStrCount intValue] != 0) {
+                        [_arrayAllGoods removeAllObjects];
+                        [_arrayAllGoods addObjectsFromArray:[lDicMsg objectForKey:KINFOS]];
+                        [_collectionView reloadData];
+                    }
                 }else{
-                    
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [self warning];
+                    });
                 }
             });
         } else {
-            
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self warning];
+            });
         }
     }];
 }
@@ -261,6 +318,10 @@
     NSInteger row = [indexPath row];
     NSDictionary *lDicGoodsInfo = [_arrayAllGoods objectAtIndex:row];
     [ShoppingManager shareShoppingManager].goodsId = [lDicGoodsInfo objectForKey:KGOODSID];
+    [self turnToDetailedGoods];
+}
+
+- (void)turnToDetailedGoods{
     DetailedGoodsViewController *lDetailed = [[DetailedGoodsViewController alloc]init];
     UINavigationController *lNavigation = [[UINavigationController alloc]initWithRootViewController:lDetailed];
     lNavigation.navigationBar.tintColor = [UIColor blueColor];
@@ -268,6 +329,18 @@
     [self.tabBarController presentViewController:lNavigation animated:YES completion:nil];
     [lDetailed release];
     [lNavigation release];
+}
+
+- (void)warning{
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, self.view.frame.size.height-200, 280, 60)];
+    [label setBackgroundColor:[UIColor blackColor]];
+    [label setText:@"获取数据失败～～～"];
+    [label setTextColor:[UIColor whiteColor]];
+    [label setTextAlignment:NSTextAlignmentCenter];
+    [label setFont:[UIFont boldSystemFontOfSize:25]];
+    [self.view addSubview:label];
+    [self performSelector:@selector(removeLabel:) withObject:label afterDelay:1];
+    [label release];
 }
 
 - (void)removeLabel:(UILabel *)sender{

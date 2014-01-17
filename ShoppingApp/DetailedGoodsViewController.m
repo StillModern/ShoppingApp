@@ -8,6 +8,7 @@
 
 #import "DetailedGoodsViewController.h"
 #import "TableViewReViewCell.h"
+#import "PlaceOrderViewController.h"
 
 @interface DetailedGoodsViewController ()
 
@@ -45,14 +46,18 @@
     
     UIButton *lButtonBuy = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [lButtonBuy setFrame:CGRectMake(0, 464, 160, 40)];
+    [lButtonBuy setBackgroundImage:[UIImage imageNamed:@"buynow.png"] forState:UIControlStateNormal];
     [lButtonBuy setTitle:@"立即购买" forState:UIControlStateNormal];
+    [lButtonBuy.titleLabel setFont:[UIFont boldSystemFontOfSize:20]];
     [lButtonBuy setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [lButtonBuy addTarget:self action:@selector(buttonBuyClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:lButtonBuy];
     
     UIButton *lButtonAddToCar = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [lButtonAddToCar setFrame:CGRectMake(160, 464, 160, 40)];
+    [lButtonAddToCar setBackgroundImage:[UIImage imageNamed:@"addtocart.png"] forState:UIControlStateNormal];
     [lButtonAddToCar setTitle:@"添加到购物车" forState:UIControlStateNormal];
+    [lButtonAddToCar.titleLabel setFont:[UIFont boldSystemFontOfSize:20]];
     [lButtonAddToCar setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [lButtonAddToCar addTarget:self action:@selector(buttonAddToCarClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:lButtonAddToCar];
@@ -221,11 +226,15 @@
                     NSDictionary *lDicMsg = [lDicGoodsInfo objectForKey:KMSG];
                     [self setGoodsInfo:lDicMsg];                    
                 }else{
-                    
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [self warning];
+                    });
                 }
             });
         } else {
-            
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self warning];
+            });
         }
     }];
 }
@@ -264,7 +273,7 @@
         } else if (i < star+0.5) {
             [lImageView setImage:[UIImage imageNamed:@"star_half.png"]];
         } else {
-            [lImageView setImage:[UIImage imageNamed:@"star.png"]];
+            [lImageView setImage:[UIImage imageNamed:@"star_empty.png"]];
         }
     }
 }
@@ -298,19 +307,25 @@
                 NSString *lStrError = [lDicGoodsReview objectForKey:KERROR];
                 if ([lStrError intValue] == 0) {
                     NSDictionary *lDicMsg = [lDicGoodsReview objectForKey:KMSG];
-                    [_arrayReview addObjectsFromArray:[lDicMsg objectForKey:KINFOS]];
-                    [_segmentedControl setTitle:[NSString stringWithFormat:@"评论 %@",[lDicMsg objectForKey:KCount]] forSegmentAtIndex:2];
-                    if (_arrayReview.count == 0) {
+                    NSString *lStrCount = [lDicMsg objectForKey:KCount];                    
+                    [_segmentedControl setTitle:[NSString stringWithFormat:@"评论 %@",lStrCount] forSegmentAtIndex:2];
+                    
+                    if ([lStrCount intValue] == 0) {
                         [_scrollView addSubview:_viewReview];
                     } else {
+                        [_arrayReview addObjectsFromArray:[lDicMsg objectForKey:KINFOS]];
                         [_scrollView addSubview:_tabelViewReview];
                     }
                 }else{
-                    
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [self warning];
+                    });
                 }
             });
         } else {
-            
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self warning];
+            });
         }
     }];
 }
@@ -328,10 +343,8 @@
     [self.navigationController.view addSubview:_webViewIntroduction];
     
     UIButton *lButtonDismiss = [UIButton buttonWithType:UIButtonTypeCustom];
-    [lButtonDismiss setFrame:CGRectMake(300, 0, 20, 20)];
-    [lButtonDismiss setTitle:@"X" forState:UIControlStateNormal];
-    [lButtonDismiss setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [lButtonDismiss setBackgroundColor:[UIColor redColor]];
+    [lButtonDismiss setFrame:CGRectMake(290, 0, 30, 30)];
+    [lButtonDismiss setBackgroundImage:[UIImage imageNamed:@"webview_delete.png"] forState:UIControlStateNormal];
     [lButtonDismiss addTarget:self action:@selector(buttonDismissClick:) forControlEvents:UIControlEventTouchUpInside];
     [_webViewIntroduction addSubview:lButtonDismiss];
 }
@@ -371,7 +384,7 @@
         if (i<[lStrStar intValue]) {
             [lImageView setImage:[UIImage imageNamed:@"star_light.png"]];
         } else {
-            [lImageView setImage:[UIImage imageNamed:@"star.png"]];
+            [lImageView setImage:[UIImage imageNamed:@"star_empty.png"]];
         }
     }
     [lCell.labelDetail setText:[lDicReview objectForKey:KDETAIL]];
@@ -386,15 +399,61 @@
 }
 
 - (void)buttonBuyClick:(UIButton *)sender{
-    NSLog(@"buy");
+    PlaceOrderViewController *lPlaceOrder = [[PlaceOrderViewController alloc]init];
+    [self.navigationController pushViewController:lPlaceOrder animated:YES];
+    [lPlaceOrder release];
 }
 
 - (void)buttonAddToCarClick:(UIButton *)sender{
-    NSLog(@"AddToCar");
+    NSURL *lURLAddToCar = [NSURL URLWithString:_netConnect.lAddShoppingCar];
+    NSMutableURLRequest *lRequestAddToCar = [NSMutableURLRequest requestWithURL:lURLAddToCar];
+    NSString *lStringBody = [NSString stringWithFormat:@"goodsid=%@&customerid=%@&goodscount=%i",[ShoppingManager shareShoppingManager].goodsId,[ShoppingManager shareShoppingManager].coustomerid,1];
+    [lRequestAddToCar setHTTPMethod:KHTTPMETHOD];
+    [lRequestAddToCar setHTTPBody:[lStringBody dataUsingEncoding:NSUTF8StringEncoding]];
+    [NSURLConnection sendAsynchronousRequest:lRequestAddToCar queue:_operationQueue completionHandler:^(NSURLResponse *lResponse, NSData *lData, NSError *lError) {
+        if (lError == nil) {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                NSDictionary *lDicAddToCar = [NSJSONSerialization JSONObjectWithData:lData options:NSJSONReadingAllowFragments error:nil];
+                NSString *lStrError = [lDicAddToCar objectForKey:KERROR];
+                if ([lStrError intValue] == 0) {
+                    NSDictionary *lDicMsg = [lDicAddToCar objectForKey:KMSG];
+                    NSString *lStrCount = [lDicMsg objectForKey:KCount];
+                    if ([lStrCount intValue] != 0) {
+                        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                    }                                        
+                }else{
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [self warning];
+                    });
+                }
+            });
+        } else {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self warning];
+            });
+        }
+    }];
+    
 }
 
 - (void)buttonDismissClick:(UIButton *)sender{
     [_webViewIntroduction removeFromSuperview];
+}
+
+- (void)warning{
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, self.view.frame.size.height-200, 280, 60)];
+    [label setBackgroundColor:[UIColor blackColor]];
+    [label setText:@"添加到购物车失败"];
+    [label setTextColor:[UIColor whiteColor]];
+    [label setTextAlignment:NSTextAlignmentCenter];
+    [label setFont:[UIFont boldSystemFontOfSize:25]];
+    [self.view addSubview:label];
+    [self performSelector:@selector(removeLabel:) withObject:label afterDelay:1];
+    [label release];
+}
+
+- (void)removeLabel:(UILabel *)sender{
+    [sender removeFromSuperview];
 }
 
 @end
