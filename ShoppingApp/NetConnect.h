@@ -18,6 +18,7 @@
 @property(nonatomic, copy) NSString *lCheckTelephone; //检查电话号码是否有效
 @property(nonatomic, copy) NSString *lChangePassword; //修改密码
 @property(nonatomic, copy) NSString *lSearchGoods; //搜索商品
+@property(nonatomic, copy) NSString *lHotGoods; //热门商品
 @property(nonatomic, copy) NSString *lGetGoods; //查看全部商品
 @property(nonatomic, copy) NSString *lGetGoodInfo; //查看商品详细信息
 @property(nonatomic, copy) NSString *lAddReview; //添加评论
@@ -32,5 +33,8 @@
 @property(nonatomic, copy) NSString *lAddOrder; //提交订单
 @property(nonatomic, copy) NSString *lGetOrder; //查看订单
 @property(nonatomic, copy) NSString *lDeleteOrder; //删除订单
+
+@property(nonatomic, copy) NSString *lGoodsImage; //商品图片
+@property(nonatomic, copy) NSString *lGOOdsOtherInfo; //商品的其它四个文件
 
 @end

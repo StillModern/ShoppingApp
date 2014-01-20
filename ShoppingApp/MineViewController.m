@@ -23,11 +23,16 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+<<<<<<< HEAD
         
         self.tabBarItem.title = @"我";
         self.tabBarItem.image = [UIImage imageNamed:@"tabbar_mine"];
         
         _orderArray = [[NSMutableArray alloc]init];
+=======
+        self.tabBarItem.title = @"我";
+        self.tabBarItem.image = [UIImage imageNamed:@"tabbar_mine.png"];
+>>>>>>> 22c0af3f33e817379992d8efa43bd447fa43c721
     }
     return self;
 }
