@@ -10,5 +10,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "__44-[ShoppingCarViewController viewWillAppear:]_block_invoke_2:ShoppingCarViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_labelCount">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

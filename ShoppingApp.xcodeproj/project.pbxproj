@@ -48,6 +48,11 @@
 		107308AC1888B9BB00658176 /* tabbar_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 107308851888B9BB00658176 /* tabbar_mine@2x.png */; };
 		107308AD1888B9BB00658176 /* webview_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 107308861888B9BB00658176 /* webview_delete.png */; };
 		107308AE1888B9BB00658176 /* webview_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 107308871888B9BB00658176 /* webview_delete@2x.png */; };
+		107308B31889082C00658176 /* checkbox_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 107308AF1889082A00658176 /* checkbox_off.png */; };
+		107308B41889082C00658176 /* checkbox_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 107308B01889082B00658176 /* checkbox_off@2x.png */; };
+		107308B51889082C00658176 /* checkbox_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 107308B11889082B00658176 /* checkbox_on.png */; };
+		107308B61889082C00658176 /* checkbox_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 107308B21889082C00658176 /* checkbox_on@2x.png */; };
+		107308B918890DD300658176 /* TableViewShoppingCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 107308B818890DD300658176 /* TableViewShoppingCarCell.m */; };
 		10E9248E187CDE89004684B3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E9248D187CDE89004684B3 /* UIKit.framework */; };
 		10E92490187CDE89004684B3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E9248F187CDE89004684B3 /* Foundation.framework */; };
 		10E92492187CDE89004684B3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E92491187CDE89004684B3 /* CoreGraphics.framework */; };
@@ -132,6 +137,12 @@
 		107308851888B9BB00658176 /* tabbar_mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_mine@2x.png"; sourceTree = "<group>"; };
 		107308861888B9BB00658176 /* webview_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webview_delete.png; sourceTree = "<group>"; };
 		107308871888B9BB00658176 /* webview_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webview_delete@2x.png"; sourceTree = "<group>"; };
+		107308AF1889082A00658176 /* checkbox_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_off.png; sourceTree = "<group>"; };
+		107308B01889082B00658176 /* checkbox_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox_off@2x.png"; sourceTree = "<group>"; };
+		107308B11889082B00658176 /* checkbox_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_on.png; sourceTree = "<group>"; };
+		107308B21889082C00658176 /* checkbox_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox_on@2x.png"; sourceTree = "<group>"; };
+		107308B718890DD300658176 /* TableViewShoppingCarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewShoppingCarCell.h; sourceTree = "<group>"; };
+		107308B818890DD300658176 /* TableViewShoppingCarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewShoppingCarCell.m; sourceTree = "<group>"; };
 		10E9248A187CDE89004684B3 /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E9248D187CDE89004684B3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		10E9248F187CDE89004684B3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -234,17 +245,21 @@
 				107308641888B9BB00658176 /* back@2x.png */,
 				107308651888B9BB00658176 /* buynow.png */,
 				107308661888B9BB00658176 /* buynow@2x.png */,
+				107308AF1889082A00658176 /* checkbox_off.png */,
+				107308B01889082B00658176 /* checkbox_off@2x.png */,
+				107308B11889082B00658176 /* checkbox_on.png */,
+				107308B21889082C00658176 /* checkbox_on@2x.png */,
 				107308681888B9BB00658176 /* Default.png */,
 				107308691888B9BB00658176 /* Default@2x.png */,
 				107308671888B9BB00658176 /* Default-568h@2x.png */,
 				1073086A1888B9BB00658176 /* empty.png */,
 				1073086B1888B9BB00658176 /* empty@2x.png */,
-				1073086C1888B9BB00658176 /* Icon-72.png */,
-				1073086D1888B9BB00658176 /* Icon-Small-50.png */,
-				1073086E1888B9BB00658176 /* Icon-Small.png */,
-				1073086F1888B9BB00658176 /* Icon-Small@2x.png */,
 				107308701888B9BB00658176 /* Icon.png */,
 				107308711888B9BB00658176 /* Icon@2x.png */,
+				1073086C1888B9BB00658176 /* Icon-72.png */,
+				1073086E1888B9BB00658176 /* Icon-Small.png */,
+				1073086F1888B9BB00658176 /* Icon-Small@2x.png */,
+				1073086D1888B9BB00658176 /* Icon-Small-50.png */,
 				107308721888B9BB00658176 /* password.png */,
 				107308731888B9BB00658176 /* password@2x.png */,
 				107308741888B9BB00658176 /* password_off.png */,
@@ -449,6 +464,8 @@
 				100ABA9C187E31030007A613 /* CustomCollectionViewCell.m */,
 				10FD8D9B1883A23A00EFC998 /* TableViewReViewCell.h */,
 				10FD8D9C1883A23A00EFC998 /* TableViewReViewCell.m */,
+				107308B718890DD300658176 /* TableViewShoppingCarCell.h */,
+				107308B818890DD300658176 /* TableViewShoppingCarCell.m */,
 			);
 			name = "\bCustomView";
 			sourceTree = "<group>";
@@ -558,6 +575,10 @@
 				107308AC1888B9BB00658176 /* tabbar_mine@2x.png in Resources */,
 				107308AD1888B9BB00658176 /* webview_delete.png in Resources */,
 				107308AE1888B9BB00658176 /* webview_delete@2x.png in Resources */,
+				107308B31889082C00658176 /* checkbox_off.png in Resources */,
+				107308B41889082C00658176 /* checkbox_off@2x.png in Resources */,
+				107308B51889082C00658176 /* checkbox_on.png in Resources */,
+				107308B61889082C00658176 /* checkbox_on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +611,7 @@
 				100ABA9D187E31030007A613 /* CustomCollectionViewCell.m in Sources */,
 				100C1232187F7EE5008ED6EE /* ShoppingManager.m in Sources */,
 				10FD8D9D1883A23A00EFC998 /* TableViewReViewCell.m in Sources */,
+				107308B918890DD300658176 /* TableViewShoppingCarCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
