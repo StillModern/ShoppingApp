@@ -19,6 +19,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+        self.tabBarItem.title = @"购物车";
+        self.tabBarItem.image = [UIImage imageNamed:@"tabbar_car"];
     }
     return self;
 }

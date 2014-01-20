@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QueryOrderViewCell.h"
 
-@interface QuerryGoodsViewController : UIViewController
-
+@interface QuerryGoodsViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+    
+    UITableView *_tableView;
+//    NSMutableDictionary *_dictionary;
+    NSMutableArray *_array;
+//    NSMutableDictionary *_goodsDictionary;
+}
+@property(nonatomic,retain) NSMutableDictionary *dictionary;
+@property(nonatomic,retain) NSMutableArray *goodsArray;
+@property(assign,nonatomic)BOOL isPush;
 @end

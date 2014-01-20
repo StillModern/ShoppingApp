@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QueryOrderViewController : UIViewController
+@interface QueryOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
 
+    UITableView *_tableView;
+    NSMutableDictionary *_dictionary;
+}
 @end

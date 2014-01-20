@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MineViewController : UIViewController
+@interface MineViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+    
+    UITableView *_tableView;
+    NSArray *_array;
+    NSMutableArray *_orderArray;
+}
 
 @end

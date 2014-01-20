@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GoodsViewController : UIViewController
+- (IBAction)buttonClick:(UIButton *)sender;
 
 @end

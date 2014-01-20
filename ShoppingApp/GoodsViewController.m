@@ -7,6 +7,7 @@
 //
 
 #import "GoodsViewController.h"
+#import "PlaceOrderViewController.h"
 
 @interface GoodsViewController ()
 
@@ -19,6 +20,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.tabBarItem.title = @"商品";
+        self.tabBarItem.image = [UIImage imageNamed:@"tabbar_goods"];
     }
     return self;
 }
@@ -35,4 +38,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)buttonClick:(UIButton *)sender {
+    
+    
+    PlaceOrderViewController *lPlaceOrderViewController = [[[PlaceOrderViewController alloc]init]autorelease];
+    [self presentViewController:lPlaceOrderViewController animated:YES completion:nil];
+}
 @end
