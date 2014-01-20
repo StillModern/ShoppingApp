@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "__34-[GoodsViewController viewDidLoad]_block_invoke_2128:GoodsViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_arrayAllGoods">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__44-[ShoppingCarViewController viewWillAppear:]_block_invoke_2:ShoppingCarViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_labelCount">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

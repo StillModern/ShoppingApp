@@ -24,12 +24,23 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     
+    //历史记录
+    NSString *lPathDocument = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *lPahtFile = [lPathDocument stringByAppendingPathComponent:@"searchHistory.json"];    
+    NSFileManager *lFileManger = [NSFileManager defaultManager];
+    if ([lFileManger fileExistsAtPath:lPahtFile]) {
+        NSData *lData = [NSData dataWithContentsOfFile:lPahtFile];
+        NSArray *lArray = [NSJSONSerialization JSONObjectWithData:lData options:NSJSONReadingAllowFragments error:nil];
+        [[ShoppingManager shareShoppingManager].arrayHistory addObjectsFromArray:lArray];
+    }
+    
     UITabBarController *lTabBarController = [[UITabBarController alloc]init];
     GoodsViewController *lGoodsViewController = [[GoodsViewController alloc]init];
     ShoppingCarViewController *lShoppingCarViewController = [[ShoppingCarViewController alloc]init];
     MineViewController *lMineViewController = [[MineViewController alloc]init];
     lTabBarController.viewControllers = @[lGoodsViewController,lShoppingCarViewController,lMineViewController];
     lTabBarController.tabBar.tintColor = [UIColor blueColor];
+    lTabBarController.tabBar.selectedImageTintColor = [UIColor greenColor];
     self.window.rootViewController = lTabBarController;
     
     [lTabBarController release];
@@ -46,6 +57,12 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    //应用退到后台，把历史记录写入文件
+    NSString *lPathDocument = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *lPahtFile = [lPathDocument stringByAppendingPathComponent:@"searchHistory.json"];
+    NSData *lData = [NSJSONSerialization dataWithJSONObject:[ShoppingManager shareShoppingManager].arrayHistory options:NSJSONWritingPrettyPrinted error:nil];
+    [lData writeToFile:lPahtFile atomically:YES];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
