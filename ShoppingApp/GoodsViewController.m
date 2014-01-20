@@ -7,15 +7,12 @@
 //
 
 #import "GoodsViewController.h"
-<<<<<<< HEAD
 #import "PlaceOrderViewController.h"
-=======
 #import "HotGoodsView.h"
 #import "CustomCollectionViewCell.h"
 #import "DetailedGoodsViewController.h"
 #import "SearchHistoryView.h"
 #import "SearchGoodsViewController.h"
->>>>>>> 22c0af3f33e817379992d8efa43bd447fa43c721
 
 @interface GoodsViewController ()
 
@@ -29,15 +26,12 @@
     if (self) {
         // Custom initialization
         self.tabBarItem.title = @"商品";
-<<<<<<< HEAD
-        self.tabBarItem.image = [UIImage imageNamed:@"tabbar_goods"];
-=======
+
         self.tabBarItem.image = [UIImage imageNamed:@"tabbar_goods.png"];
         
         _netConnect = [[NetConnect alloc]init];
         _operationQueue = [[NSOperationQueue alloc]init];
         _arrayAllGoods = [[NSMutableArray alloc]init];
->>>>>>> 22c0af3f33e817379992d8efa43bd447fa43c721
     }
     return self;
 }
@@ -164,14 +158,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-<<<<<<< HEAD
-- (IBAction)buttonClick:(UIButton *)sender {
-    
-    
-    PlaceOrderViewController *lPlaceOrderViewController = [[[PlaceOrderViewController alloc]init]autorelease];
-    [self presentViewController:lPlaceOrderViewController animated:YES completion:nil];
-}
-=======
 - (void)dealloc{
     [_searchBar release];
     [_scrollView release];
@@ -363,5 +349,4 @@
     [sender removeFromSuperview];
 }
 
->>>>>>> 22c0af3f33e817379992d8efa43bd447fa43c721
 @end

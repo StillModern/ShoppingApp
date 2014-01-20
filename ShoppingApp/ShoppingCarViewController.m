@@ -20,11 +20,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-<<<<<<< HEAD
-        
-        self.tabBarItem.title = @"购物车";
-        self.tabBarItem.image = [UIImage imageNamed:@"tabbar_car"];
-=======
         self.tabBarItem.title = @"购物车";
         self.tabBarItem.image = [UIImage imageNamed:@"tabbar_car.png"];
         
@@ -32,7 +27,6 @@
         _operationQueue = [[NSOperationQueue alloc]init];
         _arrayShoppingCar = [[NSMutableArray alloc]init];
         _arrayIsCheck = [[NSMutableArray alloc]init];
->>>>>>> 22c0af3f33e817379992d8efa43bd447fa43c721
     }
     return self;
 }

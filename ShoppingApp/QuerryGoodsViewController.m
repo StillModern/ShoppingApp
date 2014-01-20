@@ -9,7 +9,7 @@
 #import "QuerryGoodsViewController.h"
 #import "AppraiseGoodsViewController.h"
 #define GetImage @"http://192.168.1.141/shop/goodsimage/%@"
-#define KConnectIP @"192.168.1.141"
+//#define KConnectIP @"192.168.1.141"
 
 @interface QuerryGoodsViewController ()
 

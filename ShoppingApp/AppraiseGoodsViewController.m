@@ -56,7 +56,7 @@
     label3.backgroundColor = [UIColor clearColor];
     [self.view addSubview:label3];
     
-    UITextView *lTextView = [[UITextView alloc]initWithFrame:CGRectMake(20, 140, 280, 150)];
+//    UITextView *lTextView = [[UITextView alloc]initWithFrame:CGRectMake(20, 140, 280, 150)];
     
      
 //    _lTextField = [[[UITextField alloc]initWithFrame:CGRectMake(20, 140, 280, 150)]autorelease];

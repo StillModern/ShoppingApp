@@ -7,10 +7,7 @@
 //
 
 #import "NetConnect.h"
-<<<<<<< HEAD
-#define KConnectIP @"192.168.1.120"
-=======
->>>>>>> 22c0af3f33e817379992d8efa43bd447fa43c721
+//#define KConnectIP @"192.168.1.120"
 
 @implementation NetConnect
 

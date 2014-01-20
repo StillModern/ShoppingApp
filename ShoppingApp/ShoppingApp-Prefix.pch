@@ -12,9 +12,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "NetConnect.h"
-<<<<<<< HEAD
     #import <QuartzCore/QuartzCore.h>
-=======
     #import "ShoppingManager.h"
 
     #define KConnectIP @"192.168.1.121"
@@ -45,5 +43,5 @@
     #define KDATE @"date"
     #define KCOLOR @"color"
     #define KSIZE @"size"
->>>>>>> 22c0af3f33e817379992d8efa43bd447fa43c721
+
 #endif

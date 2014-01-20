@@ -35,7 +35,6 @@
 			<object class="IBUIView" id="191373211">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
-<<<<<<< HEAD
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIButton" id="141901217">
 						<reference key="NSNextResponder" ref="191373211"/>
@@ -74,12 +73,10 @@
 				</array>
 				<string key="NSFrame">{{0, 20}, {320, 548}}</string>
 				<reference key="NSSuperview"/>
-=======
 				<array class="NSMutableArray" key="NSSubviews"/>
 				<string key="NSFrame">{{0, 20}, {320, 499}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
->>>>>>> 22c0af3f33e817379992d8efa43bd447fa43c721
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MC45Njg2Mjc0NTEgMC45Njg2Mjc0NTEgMC45Njg2Mjc0NTEAA</bytes>
@@ -137,7 +134,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">1</int>
 						<reference key="object" ref="191373211"/>
-<<<<<<< HEAD
 						<array class="NSMutableArray" key="children">
 							<reference ref="141901217"/>
 							<object class="IBNSLayoutConstraint" id="808970249">
@@ -173,9 +169,7 @@
 								<int key="contentType">3</int>
 							</object>
 						</array>
-=======
 						<array class="NSMutableArray" key="children"/>
->>>>>>> 22c0af3f33e817379992d8efa43bd447fa43c721
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -225,9 +219,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-<<<<<<< HEAD
 			<int key="maxID">7</int>
-=======
 			<int key="maxID">452</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
@@ -241,7 +233,6 @@
 					</object>
 				</object>
 			</array>
->>>>>>> 22c0af3f33e817379992d8efa43bd447fa43c721
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

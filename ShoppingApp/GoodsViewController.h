@@ -10,10 +10,7 @@
 #import "HotGoodsView.h"
 #import "SearchHistoryView.h"
 
-<<<<<<< HEAD
-@interface GoodsViewController : UIViewController
-- (IBAction)buttonClick:(UIButton *)sender;
-=======
+
 @interface GoodsViewController : UIViewController<UISearchBarDelegate,UIScrollViewDelegate,HotGoodsViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,SearchHistoryDelegate>
 {
     UISearchBar *_searchBar;
@@ -25,6 +22,5 @@
     NSMutableArray *_arrayAllGoods;
     SearchHistoryView *_searchHistory;
 }
->>>>>>> 22c0af3f33e817379992d8efa43bd447fa43c721
 
 @end
